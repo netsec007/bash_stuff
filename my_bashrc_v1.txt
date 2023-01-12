@@ -36,10 +36,14 @@ shopt -s checkwinsize
 
 # Causes bash to append to history instead of overwriting it so if you start a new terminal, you have old session history
 shopt -s histappend
+export HISTCONTROL=ignoreboth
+export HISTIGNORE=ls:ll:la:l:cd:pwd:exit:mc:su:df:clear:cls
 PROMPT_COMMAND='history -a'
 
 # Allow ctrl-S for history navigation (with ctrl-R)
 #stty -ixon
+
+shopt -o noclobber
 
 # Ignore case on auto-completion
 # Note: bind used instead of sticking these in .inputrc
@@ -106,6 +110,9 @@ alias hlp='less ~/.bashrc_help'
 # alias to show the date
 alias da='date "+%Y-%m-%d %A %T %Z"'
 
+# This is GOLD for finding out what is taking so much space on your drives!
+alias diskspace="du -S | sort -n -r |more"
+
 # Alias's to modified commands
 alias cp='cp -i'
 alias mv='mv -i'
@@ -161,6 +168,7 @@ alias 777='chmod -R 777'
 
 # Search command line history
 alias h="history"
+alias hg="history | grep"
 
 # Search running processes
 alias p="ps aux | grep "
